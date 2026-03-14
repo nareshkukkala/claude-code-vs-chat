@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code vs Claude Chat — What's the Difference?</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #fff;
+    padding: 48px 20px 32px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 56px;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(26px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.78);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  /* ── CARDS ── */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+  @media (max-width: 640px) {
+    .cards { grid-template-columns: 1fr; }
+  }
+  .glass-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 32px 28px;
+  }
+  .card-icon { font-size: 38px; margin-bottom: 14px; }
+  .card-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .card-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 22px;
+  }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+  .feature-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.88);
+    line-height: 1.45;
+  }
+  .feature-list li .check {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    margin-top: 1px;
+  }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; }
+  .tag {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.28);
+    border-radius: 20px;
+    padding: 3px 11px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    max-width: 900px;
+    margin: 0 auto 48px;
+  }
+  .table-wrap h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .table-scroll { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  thead { background: rgba(255,255,255,0.15); }
+  th {
+    padding: 14px 20px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: rgba(255,255,255,0.9);
+  }
+  td {
+    padding: 13px 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.84);
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.05); }
+  .yes { color: #a8f5c3; font-weight: 700; }
+  .no  { color: rgba(255,255,255,0.3); }
+
+  /* ── CTA ── */
+  .cta {
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 48px;
+  }
+  .cta h2 { font-size: 21px; font-weight: 700; margin-bottom: 10px; }
+  .cta p  { font-size: 14px; color: rgba(255,255,255,0.72); margin-bottom: 22px; line-height: 1.6; }
+  .cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 11px 26px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary  { background: #fff; color: #764ba2; }
+  .btn-secondary {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.35);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.38);
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">Anthropic &middot; Claude</div>
+  <h1>Claude Code vs Claude Chat</h1>
+  <p>Two powerful tools, built for different jobs. Here's how to know which one is right for you.</p>
+</section>
+
+<!-- SIDE-BY-SIDE CARDS -->
+<div class="cards">
+
+  <div class="glass-card">
+    <div class="card-icon">⌨️</div>
+    <div class="card-title">Claude Code</div>
+    <div class="card-subtitle">Developer CLI Tool</div>
+    <ul class="feature-list">
+      <li><span class="check">✓</span> Runs in your terminal alongside your code</li>
+      <li><span class="check">✓</span> Reads, edits, and creates files autonomously</li>
+      <li><span class="check">✓</span> Executes shell commands and runs tests</li>
+      <li><span class="check">✓</span> Understands your entire codebase context</li>
+      <li><span class="check">✓</span> Agentic — takes multi-step actions without prompting</li>
+      <li><span class="check">✓</span> Integrates with GitHub, Vercel, and MCP servers</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">Terminal</span>
+      <span class="tag">Agentic</span>
+      <span class="tag">Developers</span>
+      <span class="tag">CLI</span>
+    </div>
+  </div>
+
+  <div class="glass-card">
+    <div class="card-icon">💬</div>
+    <div class="card-title">Claude Chat</div>
+    <div class="card-subtitle">Web Conversation Interface</div>
+    <ul class="feature-list">
+      <li><span class="check">✓</span> Runs in any web browser — no install needed</li>
+      <li><span class="check">✓</span> Great for writing, research, and Q&amp;A</li>
+      <li><span class="check">✓</span> Upload images, PDFs, and documents</li>
+      <li><span class="check">✓</span> Persistent chat history and projects</li>
+      <li><span class="check">✓</span> Works for anyone — no technical background needed</li>
+      <li><span class="check">✓</span> Access to Claude's latest models and features</li>
+    </ul>
+    <div class="tag-row">
+      <span class="tag">Browser</span>
+      <span class="tag">Conversational</span>
+      <span class="tag">Everyone</span>
+      <span class="tag">No Setup</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- COMPARISON TABLE -->
+<div class="table-wrap">
+  <h2>Feature Comparison</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>⌨️ Claude Code</th>
+          <th>💬 Claude Chat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Runs in terminal / CLI</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>No installation required</td>       <td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Reads &amp; edits local files</td>  <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Executes shell commands</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Agentic multi-step tasks</td>        <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Upload documents &amp; images</td>  <td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Persistent chat history</td>         <td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>Codebase-wide context</td>           <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Best for non-developers</td>         <td class="no">✗</td><td class="yes">✓</td></tr>
+        <tr><td>MCP server integrations</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Not sure which to start with?</h2>
+  <p>If you write code, start with Claude Code. If you don't, Claude Chat is the right choice.</p>
+  <div class="cta-buttons">
+    <a class="btn btn-primary"   href="https://claude.ai/download">Get Claude Code →</a>
+    <a class="btn btn-secondary" href="https://claude.ai">Open Claude Chat →</a>
+  </div>
+</div>
+
+<footer>Built with Claude &middot; Anthropic 2026</footer>
+
+</body>
+</html>
