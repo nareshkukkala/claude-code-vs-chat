@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Understand the difference between Claude Code (developer CLI) and Claude Chat (web interface) — features, use cases, and which one is right for you.">
 <title>Claude Code vs Claude Chat — What's the Difference?</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -118,16 +119,18 @@
     font-weight: 700;
     margin-bottom: 20px;
   }
-  .table-scroll { overflow-x: auto; }
+  .table-scroll {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    overflow: hidden;
+  }
   table {
     width: 100%;
     border-collapse: collapse;
     background: rgba(255,255,255,0.10);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 16px;
-    overflow: hidden;
   }
   thead { background: rgba(255,255,255,0.15); }
   th {
@@ -171,6 +174,11 @@
     color: #fff;
     border: 1px solid rgba(255,255,255,0.35);
   }
+  .btn:hover { opacity: 0.88; }
+  .btn:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+  }
 
   /* ── FOOTER ── */
   footer {
@@ -181,6 +189,8 @@
 </style>
 </head>
 <body>
+
+<main>
 
 <!-- HERO -->
 <section class="hero">
@@ -193,9 +203,9 @@
 <div class="cards">
 
   <div class="glass-card">
-    <div class="card-icon">⌨️</div>
-    <div class="card-title">Claude Code</div>
-    <div class="card-subtitle">Developer CLI Tool</div>
+    <div class="card-icon" aria-hidden="true">⌨️</div>
+    <h2 class="card-title">Claude Code</h2>
+    <p class="card-subtitle">Developer CLI Tool</p>
     <ul class="feature-list">
       <li><span class="check">✓</span> Runs in your terminal alongside your code</li>
       <li><span class="check">✓</span> Reads, edits, and creates files autonomously</li>
@@ -213,9 +223,9 @@
   </div>
 
   <div class="glass-card">
-    <div class="card-icon">💬</div>
-    <div class="card-title">Claude Chat</div>
-    <div class="card-subtitle">Web Conversation Interface</div>
+    <div class="card-icon" aria-hidden="true">💬</div>
+    <h2 class="card-title">Claude Chat</h2>
+    <p class="card-subtitle">Web Conversation Interface</p>
     <ul class="feature-list">
       <li><span class="check">✓</span> Runs in any web browser — no install needed</li>
       <li><span class="check">✓</span> Great for writing, research, and Q&amp;A</li>
@@ -242,35 +252,37 @@
       <thead>
         <tr>
           <th>Feature</th>
-          <th>⌨️ Claude Code</th>
-          <th>💬 Claude Chat</th>
+          <th><span aria-hidden="true">⌨️</span> Claude Code</th>
+          <th><span aria-hidden="true">💬</span> Claude Chat</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>Runs in terminal / CLI</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
-        <tr><td>No installation required</td>       <td class="no">✗</td><td class="yes">✓</td></tr>
-        <tr><td>Reads &amp; edits local files</td>  <td class="yes">✓</td><td class="no">✗</td></tr>
-        <tr><td>Executes shell commands</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
-        <tr><td>Agentic multi-step tasks</td>        <td class="yes">✓</td><td class="no">✗</td></tr>
-        <tr><td>Upload documents &amp; images</td>  <td class="no">✗</td><td class="yes">✓</td></tr>
-        <tr><td>Persistent chat history</td>         <td class="no">✗</td><td class="yes">✓</td></tr>
-        <tr><td>Codebase-wide context</td>           <td class="yes">✓</td><td class="no">✗</td></tr>
-        <tr><td>Best for non-developers</td>         <td class="no">✗</td><td class="yes">✓</td></tr>
-        <tr><td>MCP server integrations</td>         <td class="yes">✓</td><td class="no">✗</td></tr>
+        <tr><td>Runs in terminal / CLI</td>         <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
+        <tr><td>No installation required</td>       <td class="no" aria-label="No">✗</td><td class="yes" aria-label="Yes">✓</td></tr>
+        <tr><td>Reads &amp; edits local files</td>  <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
+        <tr><td>Executes shell commands</td>         <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
+        <tr><td>Agentic multi-step tasks</td>        <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
+        <tr><td>Upload documents &amp; images</td>  <td class="no" aria-label="No">✗</td><td class="yes" aria-label="Yes">✓</td></tr>
+        <tr><td>Persistent chat history</td>         <td class="no" aria-label="No">✗</td><td class="yes" aria-label="Yes">✓</td></tr>
+        <tr><td>Codebase-wide context</td>           <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
+        <tr><td>Best for non-developers</td>         <td class="no" aria-label="No">✗</td><td class="yes" aria-label="Yes">✓</td></tr>
+        <tr><td>MCP server integrations</td>         <td class="yes" aria-label="Yes">✓</td><td class="no" aria-label="No">✗</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 
 <!-- CTA -->
-<div class="cta">
+<section class="cta" aria-label="Get started">
   <h2>Not sure which to start with?</h2>
   <p>If you write code, start with Claude Code. If you don't, Claude Chat is the right choice.</p>
   <div class="cta-buttons">
     <a class="btn btn-primary"   href="https://claude.ai/download">Get Claude Code →</a>
     <a class="btn btn-secondary" href="https://claude.ai">Open Claude Chat →</a>
   </div>
-</div>
+</section>
+
+</main>
 
 <footer>Built with Claude &middot; Anthropic 2026</footer>
 
