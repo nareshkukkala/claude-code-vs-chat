@@ -2,13 +2,18 @@
 
 ## What This Project Is
 
-A single static HTML page comparing Claude Code (developer CLI) and Claude Chat (web interface). Deployed to GitHub Pages and Vercel.
+A single static HTML page comparing three Claude products:
+- **Claude Code** — developer CLI tool
+- **Claude Cowork** — team collaboration workspace
+- **Claude Chat** — web conversation interface
+
+Deployed to GitHub Pages and Vercel.
 
 ## Tech Stack
 
 - **Single file:** `index.html` — all CSS inlined, zero dependencies, no build step
 - **Style:** Purple gradient (#667eea → #764ba2) with glassmorphism cards
-- **Layout:** CSS Grid, responsive (single-column below 640px)
+- **Layout:** CSS Grid 3-column (2-col below 860px, 1-col below 540px)
 
 ## File Structure
 
@@ -56,4 +61,5 @@ Vercel auto-deploys on every push to `main` once the GitHub integration is conne
 ## CTA Button URLs
 
 - "Get Claude Code →" → `https://claude.ai/download`
+- "Try Claude Cowork →" → `https://claude.ai/team`
 - "Open Claude Chat →" → `https://claude.ai`
